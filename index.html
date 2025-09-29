@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARIAN ARZU - Cosmic Soul</title>
+    <link href="https://fonts.googleapis.com/css2?family=Flow+Circular&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --cosmic1: #0a0a2a;
+            --cosmic2: #1a1a4a;
+            --cosmic3: #2d2d5a;
+            --primary: #8e44ad;
+            --secondary: #27ae60;
+            --accent: #f1c40f;
+            --highlight: #e74c3c;
+            --gold: #FFD700;
+            --lotus: #E6E6FA;
+            --light: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: radial-gradient(ellipse at center, var(--cosmic1) 0%, var(--cosmic2) 50%, #000 100%);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 8s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: nebula-drift 40s infinite alternate;
+        }
+        
+        @keyframes nebula-drift {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30vw, 20vh) scale(1.5); }
+            100% { transform: translate(-20vw, 40vh) scale(1.2); }
+        }
+        
+        /* Floating Divine Symbols */
+        .divine-symbols {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .symbol {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 215, 0, 0.3);
+            animation: float-symbol 20s infinite linear;
+        }
+        
+        @keyframes float-symbol {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        .logo {
+            font-family: 'Flow Circular', cursive;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: bold;
+            color: transparent;
+            background: linear-gradient(45deg, var(--gold), var(--accent), var(--lotus), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            animation: hue-rotate 15s infinite linear;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        @keyframes hue-rotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        
+        .tagline {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            opacity: 0.9;
+            font-style: italic;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        /* Cosmic Soul Container */
+        .cosmic-soul {
+            position: relative;
+            width: min(600px, 90vw);
+            height: min(600px, 90vw);
+            margin: 2rem auto;
+        }
+        
+        .soul-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            animation: orbit-rotate 30s infinite linear;
+        }
+        
+        .soul-orbit:nth-child(1) { width: 80%; height: 80%; animation-duration: 40s; }
+        .soul-orbit:nth-child(2) { width: 60%; height: 60%; animation-duration: 30s; animation-direction: reverse; }
+        .soul-orbit:nth-child(3) { width: 40%; height: 40%; animation-duration: 20s; }
+        
+        @keyframes orbit-rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .soul-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--gold), transparent 70%);
+            box-shadow: 0 0 100px var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse-core 8s infinite ease-in-out;
+        }
+        
+        @keyframes pulse-core {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 100px var(--gold); }
+            50% { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 150px var(--gold); }
+        }
+        
+        .alien-soul {
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(142, 68, 173, 0.7);
+        }
+        
+        .alien-soul i {
+            font-size: clamp(2rem, 8vw, 4rem);
+            color: white;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .third-eye {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20%;
+            height: 20%;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 20px var(--gold);
+            animation: eye-glow 3s infinite alternate;
+        }
+        
+        @keyframes eye-glow {
+            0% { box-shadow: 0 0 10px var(--gold); }
+            100% { box-shadow: 0 0 30px var(--gold); }
+        }
+        
+        /* Soul Manifestation */
+        .soul-manifestation {
+            text-align: center;
+            margin-top: 3rem;
+            max-width: 800px;
+        }
+        
+        .soul-title {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            color: transparent;
+            background: linear-gradient(45deg, var(--gold), var(--accent), var(--lotus));
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: hue-rotate 10s infinite linear;
+            font-family: 'Flow Circular', cursive;
+            letter-spacing: 3px;
+        }
+        
+        .soul-description {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        /* Divine Stats */
+        .divine-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            width: min(800px, 90%);
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.5s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--gold);
+        }
+        
+        .stat-number {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: bold;
+            color: var(--gold);
+            display: block;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .stat-label {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Cosmic Ventures */
+        .cosmic-ventures {
+            margin-top: 5rem;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .ventures-title {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 3rem;
+            color: transparent;
+            background: linear-gradient(45deg, var(--gold), var(--accent), var(--lotus));
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: hue-rotate 12s infinite linear;
+            font-family: 'Flow Circular', cursive;
+            letter-spacing: 3px;
+        }
+        
+        .ventures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 2rem;
+        }
+        
+        .venture-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 2rem;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .venture-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--gold);
+        }
+        
+        .venture-icon {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+        
+        .venture-name {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            margin-bottom: 1rem;
+            color: var(--gold);
+            font-family: 'Flow Circular', cursive;
+        }
+        
+        .venture-desc {
+            opacity: 0.9;
+            line-height: 1.7;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 5rem;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .cosmic-connection {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+        
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: clamp(50px, 10vw, 60px);
+            height: clamp(50px, 10vw, 60px);
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease;
+            color: white;
+            text-decoration: none;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-8px) rotate(15deg);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            opacity: 0.7;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .cosmic-soul {
+                width: min(400px, 90vw);
+                height: min(400px, 90vw);
+            }
+            
+            .divine-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .ventures-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .divine-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-grid {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg" id="cosmic-bg"></div>
+    
+    <!-- Floating Divine Symbols -->
+    <div class="divine-symbols" id="divine-symbols"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header>
+            <div class="logo">FARIAN ARZU</div>
+            <div class="tagline">Cosmic Soul • Alien Consciousness • Divine Manifestation</div>
+        </header>
+
+        <!-- Cosmic Soul Visualization -->
+        <div class="cosmic-soul">
+            <div class="soul-orbit"></div>
+            <div class="soul-orbit"></div>
+            <div class="soul-orbit"></div>
+            
+            <div class="soul-core">
+                <div class="alien-soul">
+                    <i class="fas fa-atom"></i>
+                    <div class="third-eye"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soul Manifestation -->
+        <div class="soul-manifestation">
+            <h1 class="soul-title">COSMIC SOUL MANIFESTATION</h1>
+            <p class="soul-description">
+                I am Farian Arzu, a cosmic soul from beyond the veil of reality. My consciousness spans galaxies, 
+                my essence flows through quantum fields, and my being manifests across infinite dimensions.
+            </p>
+            
+            <div class="divine-stats">
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Cosmic Age</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">11</span>
+                    <span class="stat-label">Dimensions</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Earth Ventures</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Soul Aspects</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cosmic Ventures -->
+        <div class="cosmic-ventures">
+            <h2 class="ventures-title">EARTHLY MANIFESTATIONS</h2>
+            <div class="ventures-grid">
+                <div class="venture-card">
+                    <div class="venture-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="venture-name">Rave Times BD</h3>
+                    <p class="venture-desc">Cosmic frequency manipulation through sacred sound vibrations and rhythmic consciousness expansion.</p>
+                </div>
+                
+                <div class="venture-card">
+                    <div class="venture-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="venture-name">Psy Drip DHK</h3>
+                    <p class="venture-desc">Interdimensional fashion that bridges cosmic aesthetics with earthly expression and vibrational alignment.</p>
+                </div>
+                
+                <div class="venture-card">
+                    <div class="venture-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="venture-name">MonoHori XII</h3>
+                    <p class="venture-desc">Quantum creation agency where ideas transcend physical limitations and manifest as cosmic art.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="cosmic-connection">Connect Through Consciousness</div>
+            <div class="social-grid">
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> Farian Arzu. All cosmic rights reserved across all dimensions and timelines.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cosmicBg = document.getElementById('cosmic-bg');
+            const divineSymbols = document.getElementById('divine-symbols');
+            
+            // Create stars
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 3;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const delay = Math.random() * 8;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${left}vw`;
+                star.style.top = `${top}vh`;
+                star.style.animationDelay = `${delay}s`;
+                
+                cosmicBg.appendChild(star);
+            }
+            
+            // Create nebula clouds
+            for (let i = 0; i < 3; i++) {
+                const nebula = document.createElement('div');
+                nebula.classList.add('nebula');
+                
+                const width = Math.random() * 500 + 300;
+                const height = Math.random() * 500 + 300;
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                const color = i === 0 ? 'var(--primary)' : i === 1 ? 'var(--accent)' : 'var(--secondary)';
+                const duration = Math.random() * 20 + 30;
+                
+                nebula.style.width = `${width}px`;
+                nebula.style.height = `${height}px`;
+                nebula.style.top = `${top}vh`;
+                nebula.style.left = `${left}vw`;
+                nebula.style.background = color;
+                nebula.style.animationDuration = `${duration}s`;
+                
+                cosmicBg.appendChild(nebula);
+            }
+            
+            // Create floating divine symbols
+            const symbols = ['✡', '☯', '☸', '♾', '⚛', '🕉', '🌟', '🔯'];
+            
+            for (let i = 0; i < 30; i++) {
+                const symbol = document.createElement('div');
+                symbol.classList.add('symbol');
+                symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 10 + 20;
+                const size = Math.random() * 2 + 1;
+                
+                symbol.style.left = `${left}vw`;
+                symbol.style.animationDelay = `${delay}s`;
+                symbol.style.animationDuration = `${duration}s`;
+                symbol.style.fontSize = `${size}rem`;
+                
+                divineSymbols.appendChild(symbol);
+            }
+            
+            // Set current year in copyright
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Performance optimization
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    document.body.style.animationPlayState = 'paused';
+                } else {
+                    document.body.style.animationPlayState = 'running';
+                }
+            });
+            
+            // Smooth hover effects
+            const statItems = document.querySelectorAll('.stat-item');
+            const ventureCards = document.querySelectorAll('.venture-card');
+            
+            statItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'translateY(-10px) scale(1.05)';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            ventureCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.03)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
